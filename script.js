@@ -50,8 +50,8 @@ const BloodCriteria={};
   UrineCriteria[["F", "Y"]]={};
 
   let specificCriteria={};
-</script>
-<script>
+
+
   let content1=`<h2>Table Generator</h2>
        
     <h3>1. 테이블 생성</h3>
