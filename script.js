@@ -1,21 +1,27 @@
 const BloodCriteria={};
-  const UrineCriteria={};
+const UrineCriteria={};
 
   BloodCriteria[["M", "N"]]={
-    "Hb": [[14/365,[12,20]],[1/2,[10,17]], [1,[9.5,14]],[6,[9.5,14]],],
-    "Hct": [],
-    "RBC": [],
-    "WBC": [],
-    "Platelet": [],
-    "Segment neutrophil": [],
-    "Lymphocyte": [],
-    "Monocyte": [],
-    "Eosinophil": [],
-    "Basophil": [],
-    "Absolute Neutrophil count": [],
-    "Absolute Lymphocyte count": [],
-    "MCV": [],
-    "MCHC": [],
+    
+    "Hb": [[14/365,[13.7,20.1]],[3/12,[13.0,20.0]], [1/2,[9.5,14.5]],[6,[10.5,14.0]],[12,[11, 16.0]], [999,[14,18]]],
+    "Hct": [[14/365,[45,65]], [3/12,[42,66]], [1/2,[31,41]], [6,[33,42]],[12,[34,40]], [999,[42,52]]],
+    //https://www.nbt.nhs.uk/sites/default/files/Childrens%20FBC%20Reference%20Ranges.pdf
+    "RBC": [[14/365,[3.7,6.5]], [28/365,[3.9,5.9]], [2/12,[3.2,5.9]], [1/2,[3.1,4.3]], [1,[4.1,5.3]],[6,[3.9,5.3]],[12,[4.0,5.2]], [999,[4.5,5.3]]],
+    "WBC": [[14/365,[9,30]], [3/12,[5,21]], [1/2,[6,18]], [6,[6,15]],[12,[4.5,13.5]], [999,[5,10]]],
+    //https://www.nbt.nhs.uk/sites/default/files/Childrens%20FBC%20Reference%20Ranges.pdf
+    "Platelet": [999,[150,400]],
+    //http://a1.mayomedicallaboratories.com/webjc/attachments/110/30a2131-complete-blood-count-normal-pediatric-values.pdf
+    "Segment neutrophil": [[1/365,[41,81]],[4/365,[41,81]],[7/365,[30,60]],[15/365,[25,55]],[2/12,[20,50]],[6/12,[20,50]],[1,[15,45]],[3,[15,45]],[6,[25,57]],[10,[38,68]],[15,[40,70]],[999,[42,72]]],
+    "Lymphocyte": [[1/365,[26,36]],[4/365,[21,41]],[7/365,[31,51]],[15/365,[33,63]],[2/12,[41,71]],[6/12,[44,74]],[1,[47,77]],[3,[44,74]],[6,[35,65]],[10,[25,54]],[15,[28,48],[999,[25,45]]],
+    //"Monocyte": [],
+    //"Eosinophil": [],
+    //"Basophil": [],
+    //"Absolute Neutrophil count": [],
+    //"Absolute Lymphocyte count": [],
+    //http://a1.mayomedicallaboratories.com/webjc/attachments/110/30a2131-complete-blood-count-normal-pediatric-values.pdf
+    "MCV": [[7/365,[95,125]],[14/365,[88,115]],[2/12,[80,112]],[6/12,[70,98]],[1,[70,90]],[2,[70,90]], [4,[74,94]],[8,[76,96]],[10,[78,98]],[999,[78,98]]],
+    ///http://a1.mayomedicallaboratories.com/webjc/attachments/110/30a2131-complete-blood-count-normal-pediatric-values.pdf
+    "MCHC": [[1/365,[30,35]],[4/365,[30,38]],[7/365,[30,38]],[14/365,[30,36]],[2/12,[30,35]],[6/12,[32,36]],[1,[32,36]],[2,[30,35]], [4,[32,36]],[999,[32,36]]],
     "RDW": [],
     "MPV": [],
     "PDW": [],
@@ -51,77 +57,29 @@ const BloodCriteria={};
 
   let specificCriteria={};
 
+//
 
-  let content1=`<h2>Table Generator</h2>
-       
-    <h3>1. 테이블 생성</h3>
-    <p>EMR 차트 복사& 붙여넣기 -> 검사항목을 제외한 줄은 제거 -> 버튼 누르기<br><br>
-    <label>Sex<br>
-      <label><input type="radio" name="Sex" value="Male">Male</label>
-      <label><input type="radio" name="Sex" value="Female">Female</label><br><br>
-    </label>
-    <label>Pregnancy<br>
-      <label><input type="radio" name="Pregnancy" value="Yes">Yes</label>
-      <label><input type="radio" name="Pregnancy" value="No" checked="checked">No</label>
-    <br><br>
-    </label>
-    <label>Age<br>
-      <input type="text" id="Age"></input>
-    </label>
-<br><br>
-    <label>Lab type<br>
-<select id="labType">
-<option value="Serum">Serum</option>
-<option value="Urine">Urine</option>
-</select></label><br><br>
-    <label>Lab content<br>
-      <textarea onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="tableText" style="resize: none" cols="50" rows="10" placeholder="Input table content"></textarea>
-      <button onclick="testtest()">Please</button>
-    </label>
-    </p>
-    <h3>3. 테이블 형식 설정</h3>
-<select id="styleSelect">
-<option value="1">1</option>
-<option value="2">그런거없다</option>
-</select>
-<br><br><button onclick="showTable()">insert</button><br><br>
-    <div id="htmltable"></div>
-    
-<h3>4. 테이블 삽입</h3>
-<p>테이블이 잘 생성되었는지를 확인하였으면 확정 버튼을 눌러 테이블 리스트에 추가하세요.<br>
-확정된 테이블들은 나중에 다운받을 PPT 파일에 포함됩니다.
-<br>실제 PPT에서의 테이블은 모양이 조금 다를 수 있습니다.
-</p>
-<br>
-<button onclick="appendTable()">삽입</button>
-    <div id="tableList"></div>
-<h3>5. 파일 저장
-<p>작업이 모두 끝났으면 완료 버튼을 눌러 작업을 종료하세요.</p>
-    <label>파일 이름 설정<input type="text" id="filename"></input></label>
-    <br>
-    <button onclick="createPpt()">완료</button>
-    `;
-  let content2=``;
+function createSpecificCriteria(sex, pregnancy, age, originalCriteria) {
+  let returnDict={};
+  
 
+}
+
+
+
+ 
   //메뉴전환
   function changeToContent1(){
-    document.getElementById("appcontent").innerHTML=content1;
+    document.getElementById("appcontent").innerHTML=document.getElementById("content1").innerHTML;
   }
 
   function changeToContent2(){
-    document.getElementById("appcontent").innerHTML=content2;
+    document.getElementById("appcontent").innerHTML=document.getElementById("content2").innerHTML;
   }
 
  
   //content1
-//enable tab
- /* document.addEventListener('keydown', function(e) { 
-  if (e.keyCode == 9) {
-    e.preventDefault(); 
-    }
-  }
-);
-*/
+
   
   //parse tableText
   function myParse(somestr) {
@@ -167,6 +125,11 @@ function createTable(nestedArr, Ids){
       let td=tr.insertCell();
       td.id=Ids[1];
       td.appendChild(document.createTextNode(nestedArr[i][j]));
+    }
+    if(tr.cells[2].innerText=="▼") {
+      tr.style.color="blue";
+    } else if(tr.cells[2].innerText=="▲") {
+      tr.style.color="red";
     }
   }
   return tbl;
