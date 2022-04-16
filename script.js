@@ -133,28 +133,6 @@ const BloodCriteria={};
     return finalOutput;
   }
   
-//apply criteria
-  function myOperator(criteriaArr, value) {
-    if(criteriaArr[0]>value) {
-      return "▼";
-    } else if (criteriaArr[1]<value) {
-      return "▲";
-    } else {
-      return "";
-    }
-  }
-
-  function applyCriteria(criteria, somearr) {
-    let outputArr=[];
-    for(i=0;i<somearr.length;i++){
-        if(criteria[somearr[i][0]]==undefined){
-        outputArr.push([somearr[i][0], somearr[i][1], "undefined", somearr[i][2]]);
-        } else{
-          outputArr.push([somearr[i][0], somearr[i][1], myOperator(criteria[somearr[i][0]], somearr[i][1]), somearr[i][2]]);
-        }
-    } 
-    return outputArr;
-  }
 
 //create html table and show it in finalTable
 
@@ -163,11 +141,48 @@ function createTable(nestedArr, Ids){
   tbl.id=Ids[0];
   for(i=0;i<nestedArr.length;i++){
     let tr=tbl.insertRow();
-    for(j=0;j<nestedArr[i].length;j++){
-      let td=tr.insertCell();
-      td.id=Ids[1];
-      td.appendChild(document.createTextNode(nestedArr[i][j]));
-    }
+	  let c1=tr.insertCell(0);
+	  let c2=tr.insertCell(1);
+	  let c3=tr.insertCell(2);
+	  let c4=tr.insertCell(3);
+	  let c5=tr.insertCell(4);
+	  c1.innerText=nestedArr[i][0];
+	  c2.innerText=nestedArr[i][1];
+	  c3.innerText=" ";
+	  c4.innerText=nestedArr[i][2];
+	  c1.id=Ids[1];
+	  c2.id=Ids[1];
+	  c3.id=Ids[1];
+	  c4.id=Ids[1];
+	  c5.id=Ids[1];
+	  let b1=document.createElement("button");
+	  let b2=document.createElement("button");
+	  let b3=document.createElement("button");
+	  b1.innerText="▲";
+	  b2.innerText="▼";
+	  b3.innerText="정상";
+	  b1.onclick=function() {
+		  c3.innerText="▲";
+		  tr.style.color="red";
+	  };
+	  b2.onclick=function() {
+		  c3.innerText="▼";
+		  tr.style.color="blue";
+	  };
+	  b3.onclick=function() {
+		  c3.innerText=" ";
+		  tr.style.color="black";
+	  };
+	  c5.appendChild(b1);
+	  c5.appendChild(b3);
+	  c5.appendChild(b2);
+
+
+
+
+
+
+    
   }
   return tbl;
 }
@@ -180,8 +195,7 @@ function createTable(nestedArr, Ids){
   
   function showTable() {
     let originalText=document.getElementById("tableText").value;
-    let parsedText=myParse(originalText);
-    let nestedArr=applyCriteria({},parsedText);
+    let nestedArr=myParse(originalText);
     //console.log(nestedArr);
     styleindex=document.getElementById("styleSelect").value;
     let finalTbl=createTable(nestedArr, styleDict[styleindex]);
@@ -199,6 +213,9 @@ function createTable(nestedArr, Ids){
   function appendTable() {
     try{
     let inserttbl=document.getElementById("htmltable").children[0];
+	    for(i=0;i<inserttbl.rows.length;i++){
+		    inserttbl.rows[i].deleteCell(-1);
+	    };
       document.getElementById("tableList").appendChild(inserttbl);
       document.getElementById("tableList").innerHTML+="<br>";
     }
