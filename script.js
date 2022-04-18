@@ -33,9 +33,9 @@
 
 //create html table and show it in finalTable
 
-function createTable(nestedArr, Ids){
+function createTable(nestedArr, classes) {
   let tbl=document.createElement("table");
-  tbl.id=Ids[0];
+  tbl.className=classes[0];
   for(i=0;i<nestedArr.length;i++){
     let tr=tbl.insertRow();
 	  let c1=tr.insertCell(0);
@@ -47,11 +47,11 @@ function createTable(nestedArr, Ids){
 	  c2.innerText=nestedArr[i][1];
 	  c3.innerText=" ";
 	  c4.innerText=nestedArr[i][2];
-	  c1.id=Ids[1];
-	  c2.id=Ids[1];
-	  c3.id=Ids[1];
-	  c4.id=Ids[1];
-	  c5.id=Ids[1];
+	  
+	  for(j=0;j<5;j++){
+		  [c1,c2,c3,c4,c5][j].className=classes[1];
+	  }
+	  
 	  let b1=document.createElement("button");
 	  let b2=document.createElement("button");
 	  let b3=document.createElement("button");
@@ -73,6 +73,7 @@ function createTable(nestedArr, Ids){
 	  c5.appendChild(b1);
 	  c5.appendChild(b3);
 	  c5.appendChild(b2);
+	  console.log(tbl.className+c1.className);
 
 
 
