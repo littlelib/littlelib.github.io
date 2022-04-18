@@ -36,7 +36,17 @@
 function createTable(nestedArr, classes) {
   let tbl=document.createElement("table");
   tbl.className=classes[0];
-  for(i=0;i<nestedArr.length;i++){
+  let head=tbl.insertRow();
+	let headC1=head.insertCell(0);
+	let headC2=head.insertCell(1);
+	let headC3=head.insertCell(2);
+	let headC4=head.insertCell(3);
+	let headC5=head.insertCell(4);
+	for(i=0;i<5;i++){
+		[headC1,headC2,headC3,headC4,headC5][i].innerText=["항목명","검사결과","비고","참고치",""][i];
+		[headC1,headC2,headC3,headC4,headC5][i].className=classes[1];
+	}
+	for(i=0;i<nestedArr.length;i++){
     let tr=tbl.insertRow();
 	  let c1=tr.insertCell(0);
 	  let c2=tr.insertCell(1);
