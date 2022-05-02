@@ -21,19 +21,7 @@
        
     <h3>1. 테이블 생성</h3>
     <p>EMR 차트 복사& 붙여넣기 -> 검사항목을 제외한 줄은 제거 -> 버튼 누르기<br><br>
-    <label>Sex<br>
-      <label><input type="radio" name="Sex" value="Male">Male</label>
-      <label><input type="radio" name="Sex" value="Female">Female</label><br><br>
-    </label>
-    <label>Pregnancy<br>
-      <label><input type="radio" name="Pregnancy" value="Yes">Yes</label>
-      <label><input type="radio" name="Pregnancy" value="No" checked="checked">No</label>
-    <br><br>
-    </label>
-    <label>Age<br>
-      <input type="text" id="Age"></input>
-    </label>
-<br><br>
+        
     <label>Lab type<br>
 <select id="labType">
 <option value="Serum">Serum</option>
@@ -41,7 +29,7 @@
 </select></label><br><br>
     <label>Lab content<br>
       <textarea onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="tableText" style="resize: none" cols="50" rows="10" placeholder="Input table content"></textarea>
-      <button onclick="testtest()">Please</button>
+      
     </label>
     </p>
     <h3>3. 테이블 형식 설정</h3>
@@ -66,8 +54,11 @@
     <br>
     <button onclick="createPpt()">완료</button>
 </div>
-<div id="content2" style="display: none;"></div>
-   
+<div id="content2" style="display: none;">
+	<p>아직 개발되지 않았습니다.</p>
+
+</div>
+ 
   </body>
 </html>
 

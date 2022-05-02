@@ -1,5 +1,21 @@
-
+let blood_dict={
+	"Hb":[11.5,15.5],
+	"Hct": [34.5,46.5],
+	"RBC": [3.8,5],
+	"WBC": [3.7,9.5],
+	"Platelet": [150,400],
+	"Segment neutrophil":[50,75]
+};
   
+let urine_dict={
+
+};
+
+let whole_dict={
+	"Serum": blood_dict,
+	"Urine": urine_dict
+};
+
   //메뉴전환
   function changeToContent1(){
     document.getElementById("appcontent").innerHTML=document.getElementById("content1").innerHTML;
@@ -95,6 +111,49 @@ function createTable(nestedArr, classes) {
   return tbl;
 }
 
+function autoFormat(someTable, exam_type) {
+	let criteria=whole_dict[exam_type];
+	for (i=1;i<someTable.rows.length;i++) {
+		row=someTable.rows[i];
+		//console.log(row.cells[1].innerText);
+		//console.log(criteria);
+		
+		if (typeof criteria[row.cells[0].innerText]=='undefined') {
+
+			row.cells[2].innerText="undefined";
+			row.style.color="green";
+			continue;		
+		}
+		if (row.cells[1].innerText<criteria[row.cells[0].innerText][0]) {
+			row.cells[2].innerText="▼";
+			row.style.color="blue";
+		} else if (row.cells[1].innerText>criteria[row.cells[0].innerText][1]) {
+			row.cells[2].innerText="▲";
+			row.style.color="red";
+		} else {
+			row.cells[2].innerText="";
+			row.style.color="black";
+		}
+	}
+	return someTable;
+}
+
+function create_initial_table(nestedArr, classes, exam_type) {
+	let table=createTable(nestedArr, classes);
+	return autoFormat(table, exam_type);
+}
+
+
+
+
+
+
+
+
+
+
+
+
   function testinsert(){
     document.getElementById("htmltable").appendChild(createTable([[1,2,3],[4,5,6]],["tableStyle1", "cellStyle1"]));
   }
@@ -106,7 +165,9 @@ function createTable(nestedArr, classes) {
     let nestedArr=myParse(originalText);
     //console.log(nestedArr);
     styleindex=document.getElementById("styleSelect").value;
-    let finalTbl=createTable(nestedArr, styleDict[styleindex]);
+	  let labtype=document.getElementById("labType");
+    let finalTbl=create_initial_table(nestedArr, styleDict[styleindex], labtype.options[labtype.selectedIndex].value);
+	  
     try{
       let tablePlace=document.getElementById("htmltable");
     tablePlace.replaceChild(finalTbl, tablePlace.children[0]);  
