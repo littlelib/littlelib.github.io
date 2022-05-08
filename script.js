@@ -1,12 +1,99 @@
+let nd=[0, 99999];
 let blood_dict={
 	"Hb":[11.5,15.5],
 	"Hct": [34.5,46.5],
 	"RBC": [3.8,5],
 	"WBC": [3.7,9.5],
 	"Platelet": [150,400],
-	"Segment neutrophil":[50,75]
+	"Segment neutrophil":[50,75],
+	"Lymphocyte": [20, 44],
+	"Monocyte": [2, 9],
+	"Eosinophil": [0, 5],
+	"Basophil": [0, 2],
+	"Absolute Neutrophil count": [1600, 7000],
+	//"Absolute Lymphocyte count": [0, 99999],
+	"MCV": [82, 98],
+	"MCH": [27, 33],
+	"MCHC": [32, 36],
+	"RDW": [11.5, 14.5],
+	"MPV": [9, 13],
+	//"PDW": [0, 99999],
+	"PCT": [0.12, 0.38],
+
+	"Sodium(serum)": [135, 145],
+	"Potassium(serum)": [3.5, 5.5],
+	"Chloride(serum)": [95, 110],
+	"Calcium(serum)": [8.2, 10.8],
+	"Phosphorous(serum)": [2.5, 4.7],
+
+	"PT Sec": [9.5, 13],
+	"I.N.R (1.2이하)": [0.8, 1.2],
+	"PT Percent": [70, 140],
+	"aPTT": [27, 39.5],
+
+	"CK-MB": [0, 5],
+	"Troponin I": [0, 45.43],
+
+	"Protein(serum)": [6, 8.2],
+	"Albumin(serum) ": [3.5, 5.2],
+	"Glucose": [70, 100],
+	"Total bilirubin(serum)": [0.1, 1.2],
+	"AST(SGOT)": [10, 40],
+	"ALT(SGPT)": [7, 40],
+	"GAMMA-GT": [7, 45],
+	"BUN(serum)": [8, 22],
+	"Creatinine(serum)": [0.5, 1.2],
+	"Alkaline Phosphatase": [35, 123],
+	"Uric acid(serum)": [2.5, 8.3],
+	"LDH(Serum)": [120, 246],
+	"CPK(Serum)": [33, 211],
+	"Ketone(serum)": [28, 120],
+	"hsCRP": [0.05, 0.5],
+
+	"Ammonia": [17, 66],
+
+	"Osmolality(serum)": [289, 308],
+
+	"Direct Bilirubin": [0, 0.5],
+	"Amylase(Serum)": [30, 118],
+	"Lipase": [8, 51],
+
+	"Vitamin B6": [14.6, 72.9],
+	"ESR", [0, 20],
+	"Procalcitonin": [0, 0.04]
+
+
+};
+
+
+let ABGA_dict={
+	"sO2": [95, 98],
+	"PH": [7.35, 7.45],
+	"PCO2": [35, 48],
+	"PO2": [83, 108],
+	"HCO3": [21, 28],
+	"HCO3-act": nd,
+	"HCO3-std": nd,
+	"TCO2": nd,
+	"BE(B)": nd,
+	"BE(ecf)": nd,
+	"SBC": nd,
+	"BE-B": [-2, 3],
+	"BE-ECF": nd,
+	"iCa": [1.09, 1.30],
+	//"iMg": 
+
+	"Ca++": [1.15, 1.35],
+	"Lactate": [0.7, 2.5],
+	"Glu": [60, 95],
+	"Na": [136, 147],
+	"K": [3.4, 4.5],
+	"Hct": [35, 51],
+	"THbc": nd
+
 };
   
+
 let urine_dict={
 
 };
