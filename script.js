@@ -1,27 +1,7 @@
 
-function parse_criteria(some_str) {
-	if (typeof some_str == "string") {
-		let start_idx=some_str.search(" ~ ");
-		if (start_idx==-1) {
-		    return;
-		}
-		let end_idx=start_idx+2;
-
-		let first_str=some_str.slice(0, start_idx);
-		let second_str_temp=some_str.slice(end_idx+1);
-		let second_str=second_str_temp.slice(0, second_str_temp.search(" "));
-        
-		return [Number(first_str), Number(second_str)];
-    } else {
-	    console.log("Not a string!");
-	    return;		
-    }
-}
 
 
-
-
-  //메뉴전환
+  //change current rendered page into other html content
   function changeToContent1(){
     document.getElementById("appcontent").innerHTML=document.getElementById("content1").innerHTML;
   }
@@ -30,17 +10,11 @@ function parse_criteria(some_str) {
     document.getElementById("appcontent").innerHTML=document.getElementById("content2").innerHTML;
   }
 
- 
-  //content1
-//enable tab
- /* document.addEventListener('keydown', function(e) { 
-  if (e.keyCode == 9) {
-    e.preventDefault(); 
-    }
-  }
-);
-*/
-  
+function changeToContent3(){
+	document.getElementById("appcontent").innerHTML=document.getElementById("content3").innerHTML;
+}
+
+   
   //parse tableText
   function myParse(somestr) {
   let temp=somestr.split("\n");
@@ -51,10 +25,31 @@ function parse_criteria(some_str) {
     return finalOutput;
   }
   
+  //parse criteria string to [lower bound, upper bound]
+  function parse_criteria(some_str) {
+	if (typeof some_str == "string") {
+		let start_idx=some_str.search("~");
+		if (start_idx==-1) {
+		    return;
+		}
+		
+		let first_str=some_str.slice(0, start_idx);
+		first_str=first_str.trim();
+		let second_str_temp=some_str.slice(start_idx+1).trim();
+		let second_str=second_str_temp.slice(0, second_str_temp.search(" "));
+        
+		return [Number(first_str), Number(second_str)];
+    } else {
+	    console.log("Not a string!");
+	    return;		
+    }
+}
+
+  
 
 //create html table and show it in finalTable
 
-function createTable(nestedArr, classes) {
+function createTable_wo(nestedArr, classes) {
   let tbl=document.createElement("table");
   tbl.className=classes[0];
   let head=tbl.insertRow();
@@ -109,6 +104,67 @@ function createTable(nestedArr, classes) {
   }
   return tbl;
 }
+
+function createTable_w(nestedArr, classes) {
+	let tbl=document.createElement("table");
+	tbl.className=classes[0];
+	let head=tbl.insertRow();
+	let head_cells=[];
+	let header_content=["항목명","검사결과","비고","참고치",""];
+	for (i=0;i<5;i++) {
+		head_cells.push(head.insertCell(i));
+		head_cells[i].innerText=header_content[i];
+		head_cells[i].className=classes[0];
+	}
+	for (i=0;i<nestedArr.length;i++) {
+		let tr=tbl.insertRow();
+		let tr_cells=[];
+		for (j=0;j<5;j++) {
+			tr_cells.push(tr.insertCell(j));
+			tr_cells[j].className=classes[1];
+		}
+		tr_cells[0].innerText=nestedArr[i][0];
+		tr_cells[1].innerText=nestedArr[i][1];
+		tr_cells[2].innerText=" ";
+		tr_cells[3].innerText=nestedArr[i][3];
+		let buttons=[];
+		for (j=0;j<3;j++) {
+			buttons.push(document.createElement("button"));
+		}
+		
+		buttons[0].innerText="▲";
+		buttons[1].innerText="정상";
+		buttons[2].innerText="▼";
+		
+		buttons[0].onclick=function() {
+			tr_cells[2].innerText="▲";
+			tr.style.color="red";
+		};
+		buttons[1].onclick=function() {
+			tr_cells[2].innerText=" ";
+			tr.style.color="black";
+		};
+		buttons[2].onclick=function() {
+			tr_cells[2].innerText="▼";
+			tr.style.color="blue";
+		};
+		for (j=0;j<3;j++) {
+		tr_cells[4].appendChild(buttons[j]);
+		}
+
+	}
+	return tbl;
+}
+		
+function createTable(nestedArr, classes) {
+	if(document.getElementById("without_previous").checked==true) {
+		return createTable_wo(nestedArr, classes);
+	} else {
+		return createTable_w(nestedArr, classes);
+	}
+}
+		
+
 
 function autoFormat(someTable) {
 	//let criteria=whole_dict[exam_type];

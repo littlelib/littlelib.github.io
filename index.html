@@ -13,6 +13,7 @@
     
     <button onclick="changeToContent1()">표 만들기</button>
     <button onclick="changeToContent2()">사용법</button>
+    <button onclick="changeToContent3()">업데이트 내역</button>
 
 
     <div id="appcontent"></div>
@@ -21,8 +22,10 @@
        
     <h3>1. 표 생성</h3>
     <p>
-        
-    <label>자동 증감표시 기능<br>
+    <label>※표 형식<br>
+	    <label><input type="radio" name="table_option" id="without_previous" value="w/o" checked>의무기록뷰어(항목명-검사결과-참고치-결과비고)</label><br>
+	    <label><input type="radio" name="table_option" id="with_previous" value="w">검사결과조회(검사명-검사결과-직전결과-참고치)</label><br><br>
+    <label>※자동 증감표시 기능<br>
 	    <label><input type="radio" name="auto_option" id="auto_on" value="on" checked>On</label>
 	    <label><input type="radio" name="auto_option" id="auto_off" value="off">Off</label>
 
@@ -61,7 +64,11 @@
     <button onclick="createPpt()">완료</button>
 </div>
 <div id="content2" style="display: none;">
-	<p>1. BESTCARE에서 검사기록 표를 복사합니다.<br><br>
+	<p>1. BESTCARE에서 검사기록 표를 복사하여 "Lab content"에 붙여넣습니다.<br>
+	이때 의무기록뷰어로부터 복사할 경우 "표 형식"을 "의무기록뷰어"로, 검사결과조회로부터 복사할 경우 "검사결과조회"로 설정합니다.<br>
+	검사결과조회로부터 복사할 경우 검사명-검사결과-직전결과-참고치 값들이 꼭 들어가며 하며, 그 외의 값들은 포함되지 않도록 합니다.<br>
+
+	<br>
 	2. 검사 항목 이외의 모든 행을 제거합니다.<br>
 	(ex. 항목명 검사결과 참고치 결과비고; Hb 13 11.5~15.5 ; 검사자 김xx 이런 표를 붙여넣었으면 항목명~결과비고;와 검사자 김xx;를 제거)<br><br>
 	<h4>예시</h4>
@@ -88,7 +95,19 @@
 	</p>
 
 </div>
- 
+<div id="content3" style="display: none;">
+	<h2>업데이트 내역</h2>
+	<h3>V.0.1</h3>
+	<p>
+	-검사결과조회 창에서의 표 형식도 지원 추가.<br>
+	"검사명-검사결과-직전결과-참고치"를 복사해서 사용.<br>
+	
+
+
+	</p>
+
+
+</div>
   </body>
 </html>
 
