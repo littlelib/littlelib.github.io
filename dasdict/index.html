@@ -122,7 +122,10 @@
             let wordList=document.getElementById("wordList");
             wordList.textContent="";
             let word=document.getElementById("searchWord").value;
-            let dep=document.getElementById("selectDep").value;
+				if (word==""){
+							return;
+						}
+				let dep=document.getElementById("selectDep").value;
             let indexes=searchDict(word, dep, nestedArr);
             for (i=0;i<indexes.length;i++) {
                 let wordAttr=nestedArr[indexes[i]];
