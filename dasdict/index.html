@@ -53,7 +53,7 @@
     
 <div id="content" style="height:100%; width:100%;"></div>
        <script>
-   fetch(window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/') + '/content.html')
+   fetch(window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/')) + '/content.html')
    .then(res=>res.text())
     .then(text=>document.getElementById("content").insertAdjacentHTML('beforeend', text));
  </script>
