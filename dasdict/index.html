@@ -61,12 +61,12 @@
 
 <script src='https://littlelib.github.io/base_script.js' type="text/javascript"></script>
  <script>
-	 function loadJs() {
-			  async fetch(window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/')) + '/content.html')
+	 async function loadJs() {
+			  await fetch(window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/')) + '/content.html')
    .then(res=>res.text())
     .then(text=>document.getElementById("content").insertAdjacentHTML('beforeend', text));
 
-			  await let syncscript=document.createElement("script");
+			  let syncscript=document.createElement("script");
 			  syncscript.setAttribute("src", "content.js");
 		  }
 	 loadJS();
