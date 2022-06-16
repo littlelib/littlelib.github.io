@@ -3,7 +3,7 @@
                 <div>
                     <select id="selectDep" onchange="showOnSearch()"></select>
                     <br>
-                    <input type="text" id="searchWord" style="width:300px" onkeyup="showOnSearch()" onfocus="document.getElementById('wordList').display='block';" onblur="console.log("blurred");" >
+                    <input type="text" id="searchWord" style="width:300px" onkeyup="showOnSearch()" onfocus="makeVisible('wordList')" onblur="makeNone('wordlist')" >
         <!--<button onclick="console.log('clicked')">검색</button>--> 
         
                     <div class="box" id="wordList" style="display: none">    

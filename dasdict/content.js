@@ -94,3 +94,10 @@
 
         }
         whatevs();
+
+function makeVisible(id) {
+	document.getElementById(id).display='block';
+}
+function makeNone(id) {
+	document.getElementById(id).display='none';
+}
