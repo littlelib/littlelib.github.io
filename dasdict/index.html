@@ -1,173 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self'">
 
-    <meta charset="UTF-8">
-    <base target="_top">
-    <style>
-        html, body{
-            height: 100%;
-        }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="https://littlelib.github.io/base_style.css" rel="stylesheet" type="text/css">
+  <link href="content.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/earlyaccess/nanumpenscript.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/earlyaccess/hanna.css' rel="stylesheet" type="text/css">
 
-        .biggerBox{
-            display: flex;
-            flex-direction:row;
-        }
-        .box{
-            
-            flex-direction: column;
-            justify-content: flex-start;
-            border: 1px solid;
-            width: 300px;
-            height: 100%;
-            max-height: 500px;
-            overflow-y: scroll;
-            
-        }
+</head>
 
-      .box::-webkit-scrollbar{
-        display: none;
-      }
-        .cell{
-            width: 300px;
-            white-space: nowrap;
-            overflow-x: hidden;
-            text-overflow: ellipsis;
-            display: inline-block;
-            
-            
-        }
-        .cell:hover {
-            background-color: aliceblue;
-        }
-        .filler {
-            flex: 1;
-            
-        }
-
-
-    </style>
-    </head>
-    <body>
-        <div style="display: flex; flex-direction: column; height: 100%;">
-            <div class="biggerBox">
-                <div>
-                    <select id="selectDep" onchange="showOnSearch()"></select>
-                    <br>
-                    <input type="text" id="searchWord" style="width:300px" onkeyup="showOnSearch()">
-        <!--<button onclick="console.log('clicked')">검색</button>--> 
+<body>
+  
+<div class="rowFlex">
+      <button class="title" title="home" onclick="location.href='https://littlelib.github.io'">
+        Das Meds!
+      </button>
+      
+      <div style="height:100%;">
+        <button class="button" onclick="dropMenu('daschart')" id="chartButton" >Das Chart▼</button>
+        <div id='daschart' style="display: none;">
+          <button class="dropMenu" >Das Chart</button>
         
-                    <div class="box" id="wordList">    
-                    </div>
-                </div>
-                <div style="width:50px"></div>
-                <div id="searchResult" class="cell">            
-                </div>   
+          <button class="dropMenu" >사용법</button>
+      
         </div>
-        <p class="filler"></p>
-        <a style="margin-top: auto;" href="https://script.google.com/macros/s/AKfycbwhjk8-ML6LM8x7SyK2gPagu_OfETB8h6YCOLAby0lgndCRKJrvJk9JLpAMJVOWdNY/exec">EMR 약어 추가하기</a>
-        <p style="height: 200px;"></p>
+      </div>
+       
+      
         
-        
+      
+      <div style="height:100%;">
+        <button class="button" onclick="dropMenu('dasdict')" id="dictButton">Das Dict▼</button>
+        <div id='dasdict' style='display: none'>
+        <button class="dropMenu">Das dict</button>
+        <button class="dropMenu">신규 단어 등록</button>
+        <button class="dropMenu">사용법</button>
+        </div>
+      </div>
+      <div style="height:100%;">
+        <button class="button" onclick="dropMenu('about')" id="aboutButton">About▼</button>
+        <div id='about' style='display: none;'>
+        <button class="dropMenu">소개</button>
+        <button class="dropMenu">문의사항</button>
+        <button class="dropMenu">업데이트 내역</button>
+          <button class="dropMenu" onClick="console.log('wtf');">Credits</button>
+      </div></div>
     </div>
+    
+<div id="content" style="height:100%; width:100%;"></div>
+       <script>
+   fetch(window.location.pathname + 'content.html')
+   .then(res=>res.text())
+    .then(text=>document.getElementById("content").insertAdjacentHTML('beforeend', text));
+ </script>
+ 
+</body>
 
-        <script>
-        //create department select options
-        const depArr=["일반", "마취통증의학과", "안과", "재활의학과", "피부과"];
-
-        for(i=0;i<depArr.length;i++) {
-            let opt=document.createElement("option");
-            opt.value=depArr[i];
-            opt.innerHTML=depArr[i];
-            document.getElementById("selectDep").appendChild(opt);
-        }
-
-        //create EMR dictionary
-
-        let nestedArr=[];
-        function dictParse(csvDict){
-            let temp=csvDict.split("\n");
-            let finalOutput=[];
-                for (i=0;i<temp.length;i++){
-                    let nestedTemp=temp[i].split(",");
-                    finalOutput.push(nestedTemp.map(x=>x.slice(1,-1)));
-                }
-            return finalOutput;
-        }
-
-        //search EMR dictionary
-        function searchDict(word, dep, dict) {
-            let primary_index=[];
-            let secondary_index=[];
-            let leftover_index=[];
-            for (i=0;i<dict.length;i++) {
-                if (dict[i][1].toUpperCase().slice(0,word.length)!=word.toUpperCase()) {
-                    continue;
-                }
-                if (dep==dict[i][0]) {
-                    primary_index.push(i);
-                } else if (dep!="일반") {
-                    leftover_index.push(i);
-                } else {
-                    secondary_index.push(i);
-                }
-                
-            }
-            return primary_index.concat(secondary_index).concat(leftover_index);
-
-        }
-
-        function showOnSearch(){
-            let wordList=document.getElementById("wordList");
-            wordList.textContent="";
-            let word=document.getElementById("searchWord").value;
-				if (word==""){
-							return;
-						}
-				let dep=document.getElementById("selectDep").value;
-            let indexes=searchDict(word, dep, nestedArr);
-            for (i=0;i<indexes.length;i++) {
-                let wordAttr=nestedArr[indexes[i]];
-                let wordBox=document.createElement("div");
-                wordBox.className="cell";
-                wordBox.innerHTML=wordAttr[0]+" | "+wordAttr[1]+": "+wordAttr[2];
-                
-                wordBox.onclick=(()=>showSpecificWord(wordAttr));
-                document.getElementById("wordList").appendChild(wordBox);
-            }
-
-        }
-
-        function showSpecificWord(wordAttr) {
-            let result=document.getElementById("searchResult");
-            result.innerHTML=`<strong>&emsp; ${wordAttr[1]}</strong><br>과: ${wordAttr[0]}<br>영어 원문: ${wordAttr[2]}<br>한글 뜻: ${wordAttr[3]}<br>예시: ${wordAttr[4]}<br>기여자: ${wordAttr[5]}`;
-            console.log("done");
-
-        }
-
-
-
-
-
-
-
-
-        async function whatevs() {
-            
-            //fetch EMR dictionary data from google spreadsheet as csv
-            let a=await fetch("https://docs.google.com/spreadsheets/d/1WXbi1DWnh16TTR7fabfIfbBIDUewg5DBS6IS6B5ukYE/gviz/tq?tqx=out:csv&sheet=testset")
-            .then((res)=>res.text())
-            .then((data)=>{
-            return data;
-            });
-            //create EMR dictionary
-            nestedArr=dictParse(a);
-            console.log("done");
-            
-
-
-        }
-        whatevs();
-    </script>
+<script src='https://littlelib.github.io/base_script.js' type="text/javascript"></script>
+  
 </html>
+
