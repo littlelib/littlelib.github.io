@@ -1,0 +1,41 @@
+
+        html, body{
+            height: 100%;
+        }
+
+        .biggerBox{
+            display: flex;
+            flex-direction:row;
+        }
+        .box{
+            
+            flex-direction: column;
+            justify-content: flex-start;
+            border: 1px solid;
+            width: 300px;
+            height: 100%;
+            max-height: 500px;
+            overflow-y: scroll;
+            
+        }
+
+      .box::-webkit-scrollbar{
+        display: none;
+      }
+        .cell{
+            width: 300px;
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+            
+            
+        }
+        .cell:hover {
+            background-color: aliceblue;
+        }
+        .filler {
+            flex: 1;
+            
+        }
+
