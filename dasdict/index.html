@@ -19,41 +19,7 @@
 
 <body>
   
-<div class="rowFlex">
-      <button class="title" title="home" onclick="location.href='https://littlelib.github.io'">
-        Das Meds!
-      </button>
-      
-      <div style="height:100%;">
-        <button class="button" onclick="dropMenu('daschart')" id="chartButton" >Das Chart▼</button>
-        <div id='daschart' style="display: none;">
-          <button class="dropMenu" >Das Chart</button>
-        
-          <button class="dropMenu" >사용법</button>
-      
-        </div>
-      </div>
-       
-      
-        
-      
-      <div style="height:100%;">
-        <button class="button" onclick="dropMenu('dasdict')" id="dictButton">Das Dict▼</button>
-        <div id='dasdict' style='display: none'>
-        <button class="dropMenu">Das dict</button>
-        <button class="dropMenu">신규 단어 등록</button>
-        <button class="dropMenu">사용법</button>
-        </div>
-      </div>
-      <div style="height:100%;">
-        <button class="button" onclick="dropMenu('about')" id="aboutButton">About▼</button>
-        <div id='about' style='display: none;'>
-        <button class="dropMenu">소개</button>
-        <button class="dropMenu">문의사항</button>
-        <button class="dropMenu">업데이트 내역</button>
-          <button class="dropMenu" onClick="console.log('wtf');">Credits</button>
-      </div></div>
-    </div>
+<div id="header"></div>
     
 <div id="content" style="height:100%; width:100%;"></div>
        
@@ -61,7 +27,16 @@
 
 <script src='https://littlelib.github.io/base_script.js' type="text/javascript"></script>
  <script>
-	 async function loadJs() {
+	 async function loadHeader() {
+		 await fetch("https://littlelib.github.io/header.html")
+		 .then(res=>res.text())
+		 .then(text=>document.getElementById("header").insertAdjacentHTML('beforeend', text));
+		 
+		 let syncscript=document.createElement('script');
+		 syncscript.setAttribute("src","https://littlelib.github.io/base_script.js");
+		 document.body.appendChild(syncscript);
+		 }
+	 async function loadContent() {
 			  await fetch(window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/')) + '/content.html')
    .then(res=>res.text())
     .then(text=>document.getElementById("content").insertAdjacentHTML('beforeend', text));
@@ -70,7 +45,8 @@
 			  syncscript.setAttribute("src", "content.js");
 			  document.body.appendChild(syncscript);
 		  }
-	 loadJs();
+		  loadHeader();
+		loadJs();
  </script>
   
 </html>

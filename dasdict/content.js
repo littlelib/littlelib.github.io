@@ -1,5 +1,5 @@
 //create department select options
-        const depArr=["일반", "마취통증의학과", "안과", "재활의학과", "피부과"];
+        const depArr=["일반", "내과진료부", "마취통증의학과","비뇨의학과", "산부인과","성형외과", "소아청소년과", "신경과", "신경외과",  "안과", "외과", "이비인후과",  "재활의학과","정신건강의학과", "정형외과", "치과",  "피부과", "흉부외과"];
 
         for(i=0;i<depArr.length;i++) {
             let opt=document.createElement("option");
