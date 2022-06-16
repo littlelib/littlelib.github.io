@@ -268,4 +268,4 @@ function checkUrl() {
 	urlDict[query]();
 }
 
-checkUrl;
+checkUrl();
