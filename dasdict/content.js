@@ -58,7 +58,7 @@
                 wordBox.className="cell";
                 wordBox.innerHTML=wordAttr[0]+" | "+wordAttr[1]+": "+wordAttr[2];
                 
-                wordBox.onclick=(()=>showSpecificWord(wordAttr));
+                wordBox.onmousedown=(()=>showSpecificWord(wordAttr));
                 document.getElementById("wordList").appendChild(wordBox);
             }
 
