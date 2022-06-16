@@ -1,3 +1,8 @@
+let pptxbundle=document.createElement("script");
+pptxbundle.setAttribute("src","https://cdn.jsdelivr.net/npm/pptxgenjs@3.9.0/dist/pptxgen.bundle.js");
+document.body.appendChild(pptxbundle);
+
+
 
 
 
