@@ -51,7 +51,8 @@
 							return;
 						}
 				let dep=document.getElementById("selectDep").value;
-            let indexes=searchDict(word, dep, nestedArr);
+            console.log(nestedArr);
+		let indexes=searchDict(word, dep, nestedArr);
             for (i=0;i<indexes.length;i++) {
                 let wordAttr=nestedArr[indexes[i]];
                 let wordBox=document.createElement("div");
