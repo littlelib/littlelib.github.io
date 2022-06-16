@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+  <head>
+    <title>DasCharts!</title>
+    <base target="_top">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+  
+  </head>
+  <body>
+    <h1>Das Charts V.0.1</h1>
+    
+    <button onclick="changeToContent1()">표 만들기</button>
+    <button onclick="changeToContent2()">사용법</button>
+    <button onclick="changeToContent3()">업데이트 내역</button>
+
+
+    <div id="appcontent"></div>
+<div id="content1" style="display: none;">
+<h2>Table Generator</h2>
+       
+    <h3>1. 표 생성</h3>
+    <p>
+    <label>※표 형식<br>
+	    <label><input type="radio" name="table_option" id="without_previous" value="w/o" checked>의무기록뷰어(항목명-검사결과-참고치-결과비고)</label><br>
+	    <label><input type="radio" name="table_option" id="with_previous" value="w">검사결과조회(검사명-검사결과-직전결과-참고치)</label><br><br>
+    <label>※자동 증감표시 기능<br>
+	    <label><input type="radio" name="auto_option" id="auto_on" value="on" checked>On</label>
+	    <label><input type="radio" name="auto_option" id="auto_off" value="off">Off</label>
+
+    </label><br><br>
+    <label>Lab content<br>
+      <textarea onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" id="tableText" style="resize: none" cols="50" rows="10" placeholder="Input table content"></textarea>
+      
+    </label>
+    <br>
+    <button onclick="showTable()">확인</button>
+    <br>
+    </p>
+    <h3>2. 표 스타일 및 증감 설정</h3>
+<select id="styleSelect" onchange="showTable()">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="1">숫자 중에서 선택하세요</option>
+</select><br><br>
+<div id="htmltable"></div>
+<p>테이블이 잘 생성되었는지를 확인하였으면 삽입 버튼을 눌러 테이블 리스트에 추가하세요.<br>
+확정된 테이블들은 나중에 다운받을 PPT 파일에 포함됩니다.
+<br>실제 PPT에서의 테이블은 모양이 조금 다를 수 있습니다.
+</p>
+
+<br><br><button onclick="appendTable()">삽입</button><br><br>
+
+    
+<h3>3. 표 리스트</h3>
+<br>
+
+    <div id="tableList"></div>
+    <h3>4. 파일 저장</h3>
+<p>작업이 모두 끝났으면 완료 버튼을 눌러 작업을 종료하세요.</p>
+    <label>파일 이름 설정<input type="text" id="filename"></input></label>
+    <br>
+    <button onclick="createPpt()">완료</button>
+</div>
+<div id="content2" style="display: none;">
+	<p>1. BESTCARE에서 검사기록 표를 복사하여 "Lab content"에 붙여넣습니다.<br>
+	이때 의무기록뷰어로부터 복사할 경우 "표 형식"을 "의무기록뷰어"로, 검사결과조회로부터 복사할 경우 "검사결과조회"로 설정합니다.<br>
+	검사결과조회로부터 복사할 경우 검사명-검사결과-직전결과-참고치 값들이 꼭 들어가며 하며, 그 외의 값들은 포함되지 않도록 합니다.<br>
+
+	<br>
+	2. 검사 항목 이외의 모든 행을 제거합니다.<br>
+	(ex. 항목명 검사결과 참고치 결과비고; Hb 13 11.5~15.5 ; 검사자 김xx 이런 표를 붙여넣었으면 항목명~결과비고;와 검사자 김xx;를 제거)<br><br>
+	<h4>예시</h4>
+	<img src="example_1.png" alt="예시 화면"> <br><br><br>
+	3. 자동 증감표시 기능을 사용할 것인지를 선택합니다.<br>
+	붙여넣은 표에 참고치가 존재할 경우에만 적용되며, 숫자 이외의 결과값(ex. 1+, Negative)은 지원하지 않습니다.<br><br>
+	4. 확인 버튼을 누르면 임시로 표가 생성됩니다.<br><br>
+	5. 생성된 표 위의 드랍박스를 선택해서 표 스타일을 조절할 수 있습니다.<br>
+	현재는 두 가지 스타일만 지원합니다.<br><br>
+	6. 생성된 표 옆의 버튼을 눌러 증감 및 정상을 수동으로 조절할 수 있습니다.<br><br>
+	7. 작업이 완료되었으면 삽입 버튼을 눌러 표 리스트로 저장합니다.<br>
+	저장된 표는 수정되지 않으며, 맨 위의 "표 만들기"버튼을 눌러 초기화하기 전까지는 그대로 남아있습니다.<br><br>
+	8. 추가할 표가 있으면 1~7의 과정을 반복합니다.<br><br>
+	9. 표를 모두 작성하였다면 파일 이름을 적은 후 완료 버튼을 눌러 다운받습니다.<br><br>
+	10. 다운받은 ppt파일안에 지금까지 작성된 표가 있습니다. 야호!<br><br><br>
+	*주의사항*<br><br>
+	1. ppt에서 보이는 표의 모양이 앞서 만든 표와 다를 수 있습니다.(ex. 여백 등)<br>
+	2. 복사된 EMR 기준치를 그대로 사용하기 때문에 소아/임산부 등에서는 기준치가 적절하지 못할 수 있습니다.<br>
+	<br><br><br><br>	
+
+	
+
+	
+	</p>
+
+</div>
+<div id="content3" style="display: none;">
+	<h2>업데이트 내역</h2>
+	<h3>V.0.1</h3>
+	<p>
+	-검사결과조회 창에서의 표 형식도 지원 추가.<br>
+	"검사명-검사결과-직전결과-참고치"를 복사해서 사용.<br>
+	
+
+
+	</p>
+
+
+</div>
+  </body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.9.0/dist/pptxgen.bundle.js"></script>
+<script src="script.js" type="text/javascript"></script>
