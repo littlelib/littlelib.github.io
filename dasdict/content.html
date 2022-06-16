@@ -3,14 +3,14 @@
                 <div>
                     <select id="selectDep" onchange="showOnSearch()"></select>
                     <br>
-                    <input type="text" id="searchWord" style="width:300px" onkeyup="showOnSearch()">
+                    <input type="text" id="searchWord" style="width:300px" onkeyup="showOnSearch()" onfocus="document.getElementById('wordList').display='block';" onblur="document.getElementById('wordList').display='none';" >
         <!--<button onclick="console.log('clicked')">검색</button>--> 
         
-                    <div class="box" id="wordList">    
+                    <div class="box" id="wordList" style="display: none">    
                     </div>
                 </div>
                 <div style="width:50px"></div>
-                <div id="searchResult" class="cell">            
+                <div id="searchResult" >            
                 </div>   
         </div>
         <p class="filler"></p>
