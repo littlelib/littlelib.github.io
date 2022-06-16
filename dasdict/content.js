@@ -89,7 +89,7 @@
             //create EMR dictionary
             nestedArr=dictParse(a);
             console.log("done");
-            
+		console.log(nestedArr[3]);
 
 
         }
