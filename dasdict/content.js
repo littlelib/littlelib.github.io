@@ -96,8 +96,8 @@
         whatevs();
 
 function makeVisible(id) {
-	document.getElementById(id).display='block';
+	document.getElementById(id).style.display='block';
 }
 function makeNone(id) {
-	document.getElementById(id).display='none';
+	document.getElementById(id).style.display='none';
 }
