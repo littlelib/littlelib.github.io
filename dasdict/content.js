@@ -12,15 +12,14 @@
 
         let nestedArr=[];
         function dictParse(csvDict){
-            let temp=csvDict.split("\n");
+            let temp=csvDict.split("\"\n");
             let finalOutput=[];
                 for (i=0;i<temp.length;i++){
-                    let nestedTemp=temp[i].split(",");
+                    let nestedTemp=(temp[i]+'\"').split(",");
                     finalOutput.push(nestedTemp.map(x=>x.slice(1,-1)));
                 }
             return finalOutput;
         }
-
         //search EMR dictionary
         function searchDict(word, dep, dict) {
             let primary_index=[];
