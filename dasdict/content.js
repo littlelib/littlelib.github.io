@@ -18,7 +18,8 @@
                     let nestedTemp=(temp[i]+'\"').split(",");
                     finalOutput.push(nestedTemp.map(x=>x.slice(1,-1)));
                 }
-            return finalOutput;
+            	finalOutput=finalOutput.slice(1);
+		return finalOutput;
         }
         //search EMR dictionary
         function searchDict(word, dep, dict) {
@@ -81,7 +82,7 @@
         async function whatevs() {
             
             //fetch EMR dictionary data from google spreadsheet as csv
-            let a=await fetch("https://docs.google.com/spreadsheets/d/1WXbi1DWnh16TTR7fabfIfbBIDUewg5DBS6IS6B5ukYE/gviz/tq?tqx=out:csv&sheet=testset")
+            let a=await fetch("https://docs.google.com/spreadsheets/d/1WXbi1DWnh16TTR7fabfIfbBIDUewg5DBS6IS6B5ukYE/gviz/tq?tqx=out:csv&sheet=EMR_dict")
             .then((res)=>res.text())
             .then((data)=>{
             return data;
