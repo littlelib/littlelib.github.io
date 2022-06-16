@@ -2,12 +2,12 @@
             <div class="biggerBox">
                 <div>
                     <select id="selectDep" onchange="showOnSearch()"></select>
-                    
+		    <div> 
                     <input type="text" id="searchWord" style="width:300px" onkeyup="showOnSearch()" onfocus="makeVisible('wordList')" onblur="makeNone('wordList')" >
         <!--<button onclick="console.log('clicked')">검색</button>--> 
         
                     <div class="box" id="wordList" style="display: none">    
-                    </div>
+		    </div></div>
                 </div>
                 <div style="width:50px"></div>
                 <div id="searchResult" >            
