@@ -261,4 +261,11 @@ function create_initial_table(nestedArr, classes) {
     
     pres.writeFile({fileName: `${document.getElementById("filename").value}.pptx`});
   }
-  
+
+function checkUrl() {
+	let query=window.location.search;
+	let urlDict={"?cont1": changeToContent1, "?cont2": changeToContent2, "?cont3": changeToContent3};
+	urlDict[query]();
+}
+
+checkUrl;
