@@ -67,7 +67,7 @@
 
         function showSpecificWord(wordAttr) {
             let result=document.getElementById("searchResult");
-            result.innerHTML=`<strong>${wordAttr[1]}</strong><br>과: ${wordAttr[0]}<br><strong>영어 원문:</strong> ${wordAttr[2]}<br><strong>한글 뜻:</strong> ${wordAttr[3]}<br><strong>예시:</strong> ${wordAttr[4]}<br><strong>기여자:</strong> ${wordAttr[5]}`;
+            result.innerHTML=`<strong>${wordAttr[1]}</strong><br><strong>과:</strong> ${wordAttr[0]}<br><strong>영어 원문:</strong> ${wordAttr[2]}<br><strong>한글 뜻:</strong> ${wordAttr[3]}<br><strong>예시:</strong> ${wordAttr[4]}<br><strong>기여자:</strong> ${wordAttr[5]}`;
 		
             console.log("done");
 
