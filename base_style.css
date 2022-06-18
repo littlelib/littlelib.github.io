@@ -25,9 +25,9 @@ body {
       flex-direction: row;
       align-items: center;
       position: relative;
-      height: calc(80px + 0.5vh);
+      height: Min(80px , 8vh);
       background-color: white;
-      flex-shrink: 0;
+      flex-shrink: 1;
      
       
     }
