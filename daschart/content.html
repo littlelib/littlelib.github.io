@@ -1,10 +1,10 @@
-  <div style="margin-left: 10px;">
-    <h1>Das Charts V.0.1</h1>
-    <div id="appcontent"></div>
-<div id="content1" style="display: none;">
-<h2>Table Generator</h2>
-       
-    <h3>1. 표 생성</h3>
+<div style="margin-left: 10px;">
+	<div id="appcontent"></div>
+		<div id="content1" style="display: none;">
+			<h2>Table Generator</h2>
+			<hr>
+    			<h3>1. 표 생성</h3>
+			<hr>
     <p>
     <label>※표 형식<br>
 	    <label><input type="radio" name="table_option" id="without_previous" value="w/o" checked>의무기록뷰어(항목명-검사결과-참고치-결과비고)</label><br>
@@ -22,7 +22,9 @@
     <button onclick="showTable()">확인</button>
     <br>
     </p>
+    <hr>
     <h3>2. 표 스타일 및 증감 설정</h3>
+    <hr>
 <select id="styleSelect" onchange="showTable()">
 <option value="1">1</option>
 <option value="2">2</option>
@@ -36,16 +38,20 @@
 
 <br><br><button onclick="appendTable()">삽입</button><br><br>
 
-    
+<hr>
 <h3>3. 표 리스트</h3>
+<hr>
 <br>
 
     <div id="tableList"></div>
+    <hr>
     <h3>4. 파일 저장</h3>
+    <hr>
 <p>작업이 모두 끝났으면 완료 버튼을 눌러 작업을 종료하세요.</p>
     <label>파일 이름 설정<input type="text" id="filename"></input></label>
     <br>
     <button onclick="createPpt()">완료</button>
+    <div style="height: Min(10vh, 60px)"></div>
 </div>
 <div id="content2" style="display: none;">
 	<p>1. BESTCARE에서 검사기록 표를 복사하여 "Lab content"에 붙여넣습니다.<br>
