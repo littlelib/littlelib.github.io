@@ -50,5 +50,6 @@
 
 
 	#searchResult {
+		position: relative;
 		z-index: 1;
 	}
