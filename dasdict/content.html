@@ -4,12 +4,14 @@
 			<div style="margin-right: 15px;">
                			<select id="selectDep" onchange="showOnSearch()"></select>
 	    		</div>
-			<div style="position: relative;">
-	               		<input type="text" id="searchWord" style="width:40vw" onkeyup="showOnSearch()" onfocus="makeVisible('wordList')" onblur="makeNone('wordList')">
-				<div class="box" id="wordList" style="display: none"></div>
+			<div id="searchUnit">
+	                	<input type="text" id="searchWord" style="width:100%" onkeyup="showOnSearch()" onfocus="makeVisible('wordList')" onblur="makeNone('wordList')">
+				<div style="position: relative;width=100%;">	
+					<div class="box" id="wordList" style="display: none"></div>
+				</div>
 			</div>
-		</div>
 		
+		</div>
 	</div>
 	<div style="height: Min(100px , 20vh)"></div>
 	<div id="searchResult"></div>
