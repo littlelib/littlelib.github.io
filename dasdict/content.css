@@ -9,7 +9,7 @@
             flex-direction:column;
 	    align-items: center;
 	    justify-content: center;
-	    height: Min(200px , 20vh);
+	    height: Min(100px , 20vh);
         }
 
 	.dictRowFlex{
