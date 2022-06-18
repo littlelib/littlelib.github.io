@@ -39,7 +39,8 @@
         display: none;
       }
         .cell{
-            width: 300px;
+            width: 100%;
+	    margin: 0px;
             white-space: nowrap;
             overflow-x: hidden;
             text-overflow: ellipsis;
