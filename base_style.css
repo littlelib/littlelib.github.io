@@ -5,7 +5,7 @@ html, body {
 
 body {
       margin: 0px;
-      margin-left: 0px;
+      
       
     }
     
@@ -102,9 +102,9 @@ body {
       text-align: center;
       vertical-align: middle;
       font-family: 'Nanum Pen Script', cursive;
-      font-size: calc(10px + 5vh);
+      font-size: Mon(5vw, 5vh);
       pointer-events: none;
-      margin: 0px;      
+      margin-left: 0px;      
     }
 
     .simpleRowFlex{
