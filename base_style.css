@@ -103,7 +103,7 @@ body {
       text-align: center;
       vertical-align: middle;
       font-family: 'Nanum Pen Script', cursive;
-      font-size: Min(5vw, 5vh);
+      font-size: Min(10vw, 10vh);
       pointer-events: none;
       margin-left: 0px;      
     }
