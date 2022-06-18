@@ -16,7 +16,7 @@
 	}
 
         .box{
-            
+            position: relative; 
             flex-direction: column;
             justify-content: flex-start;
             border: 1px solid;
