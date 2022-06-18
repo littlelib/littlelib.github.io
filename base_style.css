@@ -101,7 +101,7 @@ body {
       font-family: 'Nanum Pen Script', cursive;
       font-size: calc(10px + 5vh);
       pointer-events: none;
-      
+      margin: 0px;      
     }
 
     .simpleRowFlex{
