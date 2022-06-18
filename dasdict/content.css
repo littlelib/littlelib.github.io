@@ -10,14 +10,14 @@
         }
 
 	.dictRowFlex{
-		position: absolute;
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 	}
 
         .box{
-            position: relative; 
+            position: absolute; 
             flex-direction: column;
             justify-content: flex-start;
             border: 1px solid;
@@ -26,6 +26,7 @@
             max-height: 500px;
             overflow-y: scroll;
 	    z-index: 3;
+	    background-color: white;
             
         }
 
