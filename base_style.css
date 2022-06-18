@@ -53,7 +53,7 @@ body {
       position: static;
       width: 100%;
       height: 100%;
-      padding: 0px Min(2.5vw , 15px) 0px Min(2.5vw , 15px);
+      padding: 0px Min(4vw , 24px) 0px Min(4vw , 24px);
       border-radius: 0px;
       box-shadow: none;
       border: solid 0px;
