@@ -118,7 +118,7 @@ body {
       border-radius: calc(10px + 1.5vw);
       align-items: center;
       width: 30vw;
-      height: calc(30px + 30vh);
+      height: Min( 30vh, 18vw);
       margin: calc(10px + 3vw);
     }
 
