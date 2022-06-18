@@ -58,7 +58,7 @@ body {
       box-shadow: none;
       border: solid 0px;
       font-weight: 900;
-      font-size: calc(12px + 0.5vw);
+      font-size: Min(20px , 1vw);
       white-space: nowrap;
       background-color: white;
       vertical-align: middle;
