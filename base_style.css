@@ -25,7 +25,8 @@ body {
       flex-direction: row;
       align-items: center;
       position: relative;
-      height: Min(80px , 10101010101010101010  background-color: white;
+      height: Min(80px , 10vw);
+      background-color: white;
       flex-shrink: 1;
      
       
