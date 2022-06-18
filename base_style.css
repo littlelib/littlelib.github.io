@@ -14,7 +14,7 @@ body {
       flex-direction: column;
       position: relative;
      align-items: center;
-      
+     justify-content: space-around; 
     }
     .rowFlex{
       
@@ -25,7 +25,7 @@ body {
       height: calc(80px + 0.5vh);
       background-color: white;
       flex-shrink: 0;
-      
+     
       
     }
     .title {
