@@ -148,6 +148,7 @@ searchWord.onkeydown=function(e) {
 		if (selected ==null) {
 		} else {
 			showSpecificWord(JSON.parse(selected.getAttribute("wordAttrib")));
+			makeNone("wordList");
 		}
 	}
 
