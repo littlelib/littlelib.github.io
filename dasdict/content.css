@@ -18,8 +18,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		justify-content: space-around;
-	}
+		justify-content: center;
 
         .box{
             position: absolute; 
@@ -65,5 +64,5 @@
 
 	#searchUnit {
 		position: relative;
-		width: Min(300px , 60vw);
+		width: Min(300px , 55vw);
 	}
