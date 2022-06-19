@@ -162,4 +162,4 @@ searchWord.onkeyup=function(e) {
 	}
 }
 
-searchWord.onclick=makeVisible("wordList");
+searchWord.onclick=(()=>makeVisible("wordList"));
