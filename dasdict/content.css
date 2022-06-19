@@ -49,6 +49,13 @@
             
             
         }
+
+	.cell.selected {
+		background-color: aliceblue;
+	}
+
+
+
         .cell:hover {
             background-color: aliceblue;
         }

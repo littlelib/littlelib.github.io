@@ -8,6 +8,8 @@
             document.getElementById("selectDep").appendChild(opt);
         }
 
+let global_word_attrib;
+
         //create EMR dictionary
 
         let nestedArr=[];
@@ -60,7 +62,11 @@
                 wordBox.innerHTML=wordAttr[0]+" | "+wordAttr[1]+": "+wordAttr[2];
                 
                 wordBox.onmousedown=(()=>showSpecificWord(wordAttr));
-                document.getElementById("wordList").appendChild(wordBox);
+                
+
+		    wordBox.setAttribute("wordAttrib", JSON.stringify(wordAttr));
+
+		    document.getElementById("wordList").appendChild(wordBox);
             }
 
         }
@@ -103,3 +109,47 @@ function makeVisible(id) {
 function makeNone(id) {
 	document.getElementById(id).style.display='none';
 }
+
+
+document.getElementById("searchWord").onkeydown=function(e) {
+  let selected = document.getElementsByClassName("selected").item(0);
+  let cells = document.getElementsByClassName("cell");
+
+  if (e.keyCode == '38') {
+    e.preventDefault();
+    if (selected == null) {
+
+    } else {
+      let upper = selected.previousElementSibling;
+      if (upper === null) {
+        selected.classList.remove("selected");
+        
+      } else {
+        upper.classList.add("selected");
+        upper.scrollIntoView(true);
+        selected.classList.remove("selected");
+      }
+    }
+  } else if (e.keyCode == '40') {
+    e.preventDefault();
+    if (selected == null) {
+      cells[0].classList.add("selected");
+    } else {
+      let lower = selected.nextElementSibling;
+      if (lower === null) {} else {
+        lower.classList.add("selected");
+        lower.scrollIntoView(false);
+        selected.classList.remove("selected");
+      }
+    }
+  }
+	if(e.keyCode == '23') {
+		e.preventDefault();
+		if (selected ==null) {
+		} else {
+			showSpecificWord(JSON.parse(selected.getAttribute("wordAttrib")));
+		}
+	}
+
+}
+
