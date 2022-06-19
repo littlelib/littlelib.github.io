@@ -14,7 +14,7 @@ body {
 	.twotoone {
 		display: flex;
 		flex-direction: column;
-		height: Max(90vh, 50vw);
+		height: Max(80vh, 40vw);
 		align-items: center;
 	}
     
