@@ -18,7 +18,8 @@ body {
       flex-direction: column;
       position: relative;
      align-items: center;
-     justify-content: space-around; 
+     justify-content: space-around;
+    height: Max(auto, 50vw); 
     }
     .rowFlex{
        
