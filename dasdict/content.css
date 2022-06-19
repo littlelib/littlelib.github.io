@@ -19,6 +19,7 @@
 		flex-direction: row;
 		align-items: flex-start;
 		justify-content: center;
+	}
 
         .box{
             position: absolute; 
