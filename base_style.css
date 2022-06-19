@@ -19,7 +19,7 @@ body {
       position: relative;
      align-items: center;
      justify-content: space-around;
-    height: Max(auto, 50vw); 
+    height: Max(90vh, 50vw); 
     }
     .rowFlex{
        
