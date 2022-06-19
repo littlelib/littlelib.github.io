@@ -126,7 +126,7 @@ searchWord.onkeydown=function(e) {
         
       } else {
         upper.classList.add("selected");
-        upper.scrollIntoView({block: nearest});
+        upper.scrollIntoView({block: "nearest"});
         selected.classList.remove("selected");
       }
     }
@@ -138,7 +138,7 @@ searchWord.onkeydown=function(e) {
       let lower = selected.nextElementSibling;
       if (lower === null) {} else {
         lower.classList.add("selected");
-        lower.scrollIntoView({block: nearest});
+        lower.scrollIntoView({block: "nearest"});
         selected.classList.remove("selected");
       }
     }
