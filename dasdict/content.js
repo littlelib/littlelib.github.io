@@ -161,3 +161,5 @@ searchWord.onkeyup=function(e) {
 		showOnSearch();
 	}
 }
+
+searchWord.onclick=makeVisible("wordList");
