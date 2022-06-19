@@ -10,6 +10,13 @@ body {
       
       
     }
+
+	.twotoone {
+		display: flex;
+		flex-direction: column;
+		height: Max(90vh, 50vw);
+		align-items: center;
+	}
     
     .columnFlex {
 	    margin-left: 0px;
