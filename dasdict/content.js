@@ -53,7 +53,7 @@ let global_word_attrib;
 							return;
 						}
 				let dep=document.getElementById("selectDep").value;
-            console.log(nestedArr);
+
 		let indexes=searchDict(word, dep, nestedArr);
             for (i=0;i<indexes.length;i++) {
                 let wordAttr=nestedArr[indexes[i]];
@@ -110,8 +110,8 @@ function makeNone(id) {
 	document.getElementById(id).style.display='none';
 }
 
-
-document.getElementById("searchWord").onkeydown=function(e) {
+let searchWord=document.getElementById("searchWord");
+searchWord.onkeydown=function(e) {
   let selected = document.getElementsByClassName("selected").item(0);
   let cells = document.getElementsByClassName("cell");
 
@@ -143,7 +143,7 @@ document.getElementById("searchWord").onkeydown=function(e) {
       }
     }
   }
-	if(e.keyCode == '23') {
+	if(e.keyCode == '13') {
 		e.preventDefault();
 		if (selected ==null) {
 		} else {
@@ -153,3 +153,10 @@ document.getElementById("searchWord").onkeydown=function(e) {
 
 }
 
+searchWord.onkeyup=function(e) {
+	let p=e.keyCode;
+	if(p=='37'||p=='38'||p=='39'||p=='40'||p=='13') {
+	} else {
+		showOnSearch();
+	}
+}
