@@ -114,7 +114,7 @@ let searchWord=document.getElementById("searchWord");
 searchWord.onkeydown=function(e) {
   let selected = document.getElementsByClassName("selected").item(0);
   let cells = document.getElementsByClassName("cell");
-
+  makeVisible("wordList");
   if (e.keyCode == '38') {
     e.preventDefault();
     if (selected == null) {
