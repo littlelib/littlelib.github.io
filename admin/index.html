@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Das Meds!</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <link href="https://littlelib.github.io/base_style.css" rel="stylesheet" type="text/css">
+  <link href="content.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/earlyaccess/nanumpenscript.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/earlyaccess/hanna.css' rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+  
+<div id="header"></div>
+    
+<div id="content" style="height:calc(100% - Min(80px , 10vw)); width:100%;"></div>
+       
+</body>
+
+<script>
+	 async function loadHeader() {
+		 await fetch("https://littlelib.github.io/header.html")
+		 .then(res=>res.text())
+		 .then(text=>document.getElementById("header").insertAdjacentHTML('beforeend', text));
+		 
+		 let syncscript=document.createElement('script');
+		 syncscript.setAttribute("src","https://littlelib.github.io/base_script.js");
+		 document.body.appendChild(syncscript);
+		 }
+	 async function loadContent() {
+			  await fetch(window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/')) + '/content.html')
+   .then(res=>res.text())
+    .then(text=>document.getElementById("content").insertAdjacentHTML('beforeend', text));
+
+			  let syncscript=document.createElement("script");
+			  syncscript.setAttribute("src", "content.js");
+			  document.body.appendChild(syncscript);
+		  }
+		  loadHeader();
+		loadContent();
+
+ </script>
+  
+</html>
+
