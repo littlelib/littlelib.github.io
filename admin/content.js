@@ -7,4 +7,19 @@ async function getNumCand() {
 }
 
 getNumCand();
+async function testing(){
 
+const octokit = new Octokit({
+  auth: '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'
+});
+
+await c=octokit.request('GET /repos/{owner}/{repo}/traffic/views', {
+  owner: 'littlelib',
+  repo: 'littlelib.github.io'
+});
+
+	console.log(c);
+
+}
+
+testing();
