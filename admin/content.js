@@ -3,7 +3,7 @@ async function getNumCand() {
 	.then(res=>res.text());
 	let temp=a.split("\"\n");
 	console.log(temp.length);
-	document.getElementById("numCand").value=temp.length-1;
+	document.getElementById("numCand").innerText=temp.length-1;
 }
 
 getNumCand();
