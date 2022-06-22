@@ -22,7 +22,7 @@ async function getMinimalLog() {
 	let logs=parseLog(a);
 	let total=logs.length;
 	let today=0;
-	let now=Date.split(" ").slice(0,4);
+	let now=Date().split(" ").slice(0,4);
 	for(i=0;i<logs.length;i++){
 		if(now==logs[i].slice(0,4)){
 			today++;
