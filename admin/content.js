@@ -24,10 +24,9 @@ async function getMinimalLog() {
 	let today=0;
 	let now=Date().split(" ").slice(0,4);
 	for(i=0;i<logs.length;i++){
-		console.log(logs[i].slice(0,4));
-		console.log(now);
+		console.log(logs[i].slice(0,4)==now);
 		if(now==logs[i].slice(0,4)){
-			today++;
+			today+=1;
 		}
 	}
 	document.getElementById("numVisitTotal").innerText=total;
