@@ -10,7 +10,7 @@ function parseLog(log) {
 	let temp=log.split("\n");
 	let returnArr=[];
 	for(i=0;i<temp.length;i++){
-		returnArr.push(temp[i].split(" "));
+		returnArr.push(temp[i].slice(1,temp[i].length).split(" "));
 	}
 	return returnArr;
 }
@@ -24,8 +24,6 @@ async function getMinimalLog() {
 	let today=0;
 	let now=Date().split(" ").slice(0,4);
 	for(i=0;i<logs.length;i++){
-		console.log(now);
-		console.log(logs[i].slice(0,4));
 		if(now==logs[i].slice(0,4)){
 			today++;
 		}
