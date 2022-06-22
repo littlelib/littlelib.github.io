@@ -24,8 +24,8 @@ async function getMinimalLog() {
 	let today=0;
 	let now=Date().split(" ").slice(0,4);
 	for(i=0;i<logs.length;i++){
-		console.log(logs[i].slice(0,4)==now);
-		if(now==logs[i].slice(0,4)){
+	//	console.log(logs[i].slice(0,4)==now);
+		if(now.join()==logs[i].slice(0,4).join()){
 			today+=1;
 		}
 	}
